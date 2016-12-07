@@ -13,7 +13,7 @@ public class MainActivity_caluclator extends AppCompatActivity {
 
     private TextView mEditText;
     private Button button0,button1,button2,button3,button4,button5,button6,button7,button8,button9,buttondot,buttonadd,buttonmultiply;
-    private Button buttonsubtract,buttondivide,buttonresult,buttonreset;
+    private Button buttonsubtract,buttondivide,buttonresult,buttonreset,buttonForLeftBracket,buttonForRightBracket;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,19 +108,46 @@ public class MainActivity_caluclator extends AppCompatActivity {
                 mEditText.append(buttonmultiply.getText());
             }
         });
+        buttonForLeftBracket.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mEditText.append(buttonForLeftBracket.getText());
+            }
+        });
+        buttonForRightBracket.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mEditText.append(buttonForRightBracket.getText());
+            }
+        });
         buttonresult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                evaluateResult();
+                try {
+                    evaluateResult();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
 
-    private void evaluateResult() {
+    private void evaluateResult() throws InterruptedException {
         String txt = mEditText.getText().toString();
+        double result;
         Expression expression = new ExpressionBuilder(txt).build();
-        double result = expression.evaluate();
-        mEditText.setText(Double.toString(result));
+        try {
+            result = expression.evaluate();
+            mEditText.setText(Double.toString(result));
+        }
+        catch (ArithmeticException e)
+        {
+            mEditText.setText(R.string.error);
+        }
+        catch (IllegalArgumentException e)
+        {
+            mEditText.setText(R.string.error);
+        }
     }
 
     private void initilize() {
@@ -142,6 +169,8 @@ public class MainActivity_caluclator extends AppCompatActivity {
         buttonresult = (Button)findViewById(R.id.buttonresult);
         buttondot = (Button)findViewById(R.id.button_);
         buttonreset = (Button)findViewById(R.id.reset);
+        buttonForLeftBracket = (Button)findViewById(R.id.leftbracket);
+        buttonForRightBracket = (Button)findViewById(R.id.rightbracket);
     }
 
     public void resetstate(View view){

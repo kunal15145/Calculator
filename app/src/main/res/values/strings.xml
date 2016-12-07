@@ -16,4 +16,7 @@
     <string name="buttonmultiply">*</string>
     <string name="buttonresult">=</string>
     <string name="buttondivide">/</string>
+    <string name="leftparanthesis">(</string>
+    <string name="righparanthesis">)</string>
+    <string name="error">ERROR</string>
 </resources>

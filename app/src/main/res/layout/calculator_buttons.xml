@@ -136,5 +136,17 @@
             android:textSize="@dimen/activity_vertical_margin"
             android:id="@+id/reset"
             android:onClick="resetstate"/>
+        <Button
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:text="@string/leftparanthesis"
+            android:textSize="16dp"
+            android:id="@+id/leftbracket"/>
+        <Button
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:text="@string/righparanthesis"
+            android:textSize="16dp"
+            android:id="@+id/rightbracket"/>
     </LinearLayout>
 </LinearLayout>
