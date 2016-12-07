@@ -3,16 +3,15 @@ package com.example.yagami.calculator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.animation.Interpolator;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.TextView;
 
-import java.util.Stack;
-import java.util.StringTokenizer;
+import net.objecthunter.exp4j.Expression;
+import net.objecthunter.exp4j.ExpressionBuilder;
 
 public class MainActivity_caluclator extends AppCompatActivity {
 
-    private EditText mEditText;
+    private TextView mEditText;
     private Button button0,button1,button2,button3,button4,button5,button6,button7,button8,button9,buttondot,buttonadd,buttonmultiply;
     private Button buttonsubtract,buttondivide,buttonresult,buttonreset;
 
@@ -28,102 +27,104 @@ public class MainActivity_caluclator extends AppCompatActivity {
         button0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                mEditText.append(button0.getText());
             }
         });
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                mEditText.append(button1.getText());
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                mEditText.append(button2.getText());
             }
         });
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                mEditText.append(button3.getText());
             }
         });
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-            }
-        });
-        button4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
+                mEditText.append(button4.getText());
             }
         });
         button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                mEditText.append(button5.getText());
             }
         });
         button6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                mEditText.append(button6.getText());
             }
         });
         button7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                mEditText.append(button7.getText());
             }
         });
         button8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                mEditText.append(button8.getText());
             }
         });
         button9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                mEditText.append(button9.getText());
             }
         });
         buttonsubtract.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                mEditText.append(buttonsubtract.getText());
             }
         });
         buttonadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                mEditText.append(buttonadd.getText());
             }
         });
         buttondivide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                mEditText.append(buttondivide.getText());
             }
         });
         buttonmultiply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                mEditText.append(buttonmultiply.getText());
             }
         });
         buttonresult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                evaluateResult();
             }
         });
     }
 
+    private void evaluateResult() {
+        String txt = mEditText.getText().toString();
+        Expression expression = new ExpressionBuilder(txt).build();
+        double result = expression.evaluate();
+        mEditText.setText(Double.toString(result));
+    }
+
     private void initilize() {
-        mEditText = (EditText)findViewById(R.id.tv_editText);
+        mEditText = (TextView) findViewById(R.id.tv_editText);
         button0 = (Button)findViewById(R.id.button0);
         button1 = (Button)findViewById(R.id.button1);
         button2 = (Button)findViewById(R.id.button2);

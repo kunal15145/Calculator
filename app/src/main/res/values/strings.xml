@@ -13,7 +13,7 @@
     <string name="button.">.</string>
     <string name="buttonadd">+</string>
     <string name="buttonsubtract">-</string>
-    <string name="buttonmultiply">X</string>
+    <string name="buttonmultiply">*</string>
     <string name="buttonresult">=</string>
     <string name="buttondivide">/</string>
 </resources>
