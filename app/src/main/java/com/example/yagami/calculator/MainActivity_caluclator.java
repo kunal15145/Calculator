@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import net.objecthunter.exp4j.Expression;
 import net.objecthunter.exp4j.ExpressionBuilder;
 
@@ -14,13 +13,21 @@ public class MainActivity_caluclator extends AppCompatActivity {
     private TextView mEditText;
     private Button button0,button1,button2,button3,button4,button5,button6,button7,button8,button9,buttondot,buttonadd,buttonmultiply;
     private Button buttonsubtract,buttondivide,buttonresult,buttonreset,buttonForLeftBracket,buttonForRightBracket;
+    private Button buttonStart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.calculator_buttons);
-        initilize();
-        listenersforButtons();
+        setContentView(R.layout.activity_main_caluclator);
+        buttonStart = (Button)findViewById(R.id.starter);
+        buttonStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setContentView(R.layout.calculator_buttons);
+                initilize();
+                listenersforButtons();
+            }
+        });
     }
 
     private void listenersforButtons() {
